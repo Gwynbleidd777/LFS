@@ -1,0 +1,257 @@
+.heade{
+    background-color:#00DFC0;
+    color: #385A64;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+    margin-top: 3%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.inspiration-text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #385A64;
+    font-size: 16px;
+  }
+  
+.topl img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+.topl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }  
+
+.topr{
+   
+    background-color: rgb(255, 255, 255);
+        text-align: center;
+        color:#385A64 ;
+        padding: 5px;
+        border-radius: 20px;
+        margin-top: 3%;
+        max-width: 100%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.topr h1{
+    border-bottom: 5px solid #00DFC0;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.topr h1, .topr h2 {
+    font-weight: bold;
+}
+
+.mid {
+        background-color: #00DFC0;
+            text-align: center;
+            color: #385A64;
+            padding: 5px;
+            margin-left: 20%;
+            margin-right: 20%;
+            border-radius: 20px;
+            margin-top: 5%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            max-width: 100%;
+            
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-width-space {
+    margin: 50px 100px;
+}  
+
+.row.mil {
+    margin-bottom: 20px; /* Adjust the margin-bottom value to control the gap */
+}
+
+.card-title {
+    text-align: center;
+    border-bottom: 3px solid #00DFC0;
+    display: inline-block;
+    padding-bottom: 5px;
+  }  
+
+.card-style {
+    /* background-color: #00DFC0; */
+    text-align: center;
+    color: #385A64;
+    width: 25rem;
+    height: 590px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+
+.card-style:hover {
+    transform: scale(1.05);
+}
+
+.card-style img {
+  border-radius: 20px 20px 0 0; /* Apply rounded corners to match the card */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mir {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.mir img {
+    border-radius: 10px; /* Adjust the value to your preference */
+    height: 350px;
+    width: 500px;
+}
+
+
+.mil{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    position: relative;
+    margin-top: 0px;
+    max-width: 100%;
+}
+
+.mil h3 {
+    border-bottom: 5px solid #00DFC0; /* Choose your desired color */
+    display: inline-block;
+    padding-bottom: 5px; /* Adjust as needed */
+    color: #385A64;
+}
+
+.mil p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.works-container {
+    text-align: center; /* Center horizontally */
+  }
+  
+  .works h2 {
+    display: inline-block;
+    border-bottom: 5px solid #00DFC0;
+    padding-bottom: 5px;
+    color: #385A64;
+    position: relative; /* For vertical centering */
+    top: 50%; /* Move the text up by 50% of its container's height */
+    transform: translateY(-50%); /* Adjust the text position to be perfectly centered vertically */
+  }  
+
+
+.botr h2{
+    border-bottom: 5px solid #00DFC0; /* Choose your desired color */
+    display: inline-block;
+    padding-bottom: 5px;
+    color: #385A64; 
+}
+
+.botl{
+   text-align: left;
+   font-weight: bold;
+}
+
+.botl label, .botl .form-control {
+    color: #385A64;
+}
+
+.botl .btn-primary {
+    background-color: #00DFC0;
+    border-color: #00DFC0;
+    color: #385A64;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    display: block; /* Make the button a block-level element */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.botl .btn-primary:hover {
+    background-color: #385A64;
+    border-color: #385A64;
+    color: #00DFC0;
+}
+
+.bot{
+    margin-top: 2%;
+    font-size: larger;
+    
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* Center-align the text in the second line */
+.contact-form p {
+    text-align: center;
+}
+  
+.get-started-button {
+    background-color: #00DFC0;
+    border-color: #00DFC0;
+    color: #385A64;
+    font-weight: bold;
+    padding: 15px 30px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.get-started-button:hover {
+    background-color: #385A64;
+    border-color: #385A64;
+    color: #00DFC0;
+}
+
+
+@media (max-width: 768px) {
+    /* Adjust the layout for screens with a maximum width of 768px */
+    .topl,
+    .topr,
+    .mil,
+    .mid,
+    .card-style { /* Center-align text within the cards and set max-width */
+        text-align: center;
+        margin: 0 auto;
+        max-width: 100%; /* Adjust as needed for responsiveness */
+        margin-bottom: 30px;
+        max-height: 100%;
+    }
+    .mid {
+        margin-top: 50px;
+    }
+    .row {
+        flex-direction: column; /* Stack rows vertically */
+    }
+}
+
+/* Hide default scrollbars */
+::-webkit-scrollbar {
+    width: 0px; /* Adjust the width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Change this to your desired track background color */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 6px;
+    /* border: 3px solid #385A64;  */
+  }

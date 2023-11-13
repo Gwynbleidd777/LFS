@@ -1,0 +1,54 @@
+.profile_div img {
+  max-width: 56px;
+  border-radius: 50%;
+  border: 1px solid #111;
+}
+
+.divider {
+  border: 1px solid #000; /* Customize the border style */
+  margin: 20px 0; /* Add space above and below the divider */
+}
+
+/* Add these styles to your CSS */
+.image-preview-box {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc; /* Border styles for the box */
+  border-radius: 5px; /* Rounded corners for the box */
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+h4 {
+  font-size: 18px;
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.remove-item-button {
+  margin-top: 15px; /* Adjust the margin as needed */
+}
+
+.remove-item-button {
+  margin-top: 10px; /* Adjust the margin as needed */
+  background-color: rgba(253, 29, 29, 0.881); /* Red background color */
+  color: #ffffff; /* White text color */
+  padding: 8px 16px; /* Adjust padding as needed */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Add border-radius for rounded corners */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+.remove-item-button:hover {
+  background-color: rgba(204, 0, 0, 0.836); /* Darker red on hover */
+}

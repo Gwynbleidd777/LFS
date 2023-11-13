@@ -1,0 +1,106 @@
+.menu {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.name {
+    float: left;
+    padding: 15px;
+}
+
+.menuitems {
+    float: right;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-menu {
+    display: inline-block;
+    padding: 15px 20px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-menu:hover {
+    background-color: #33525b;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-menu-animated {
+    animation: fadeIn 0.5s ease;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #385A64;
+    /* Set your desired background color */
+    color: rgb(255, 255, 255);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-right: 20px;
+    /* Adjust the spacing between navbar items as needed */
+}
+
+.nav-menu {
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu i {
+    margin-right: 5px;
+    /* Adjust the spacing between icon and text */
+}
+
+.navbar-icon {
+    color: #385A64;
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+/* Add this CSS to your stylesheet */
+.custom-dropdown-button {
+    background-color: #385A64; /* Replace with your navbar color */
+    border: none;
+  }
+  
+/* 
+.transparent-menu {
+    background-color: #385A64;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+.nav-menu,
+.nav-menu-animated {
+  color: #385A64;
+  text-decoration: none;
+} */

@@ -1,8 +1,21 @@
 // routes/items.js
 const express = require("express");
 const router = express.Router();
-const upload = require("../middleware/upload"); // Cloudinary middleware
+const multer = require('multer');
+const path = require('path');
 const Item = require("../models/item");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Set the destination folder
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
 
 // POST /api/items
 router.post("/", upload.single("image"), async (req, res) => {
@@ -20,9 +33,9 @@ router.post("/", upload.single("image"), async (req, res) => {
     } = req.body;
 
     // Check if an image was uploaded
-    const imageUrl = req.file ? req.file.path : null;
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
-    console.log("Cloudinary Image URL:", imageUrl);
+    console.log("Local Image URL:", imageUrl);
 
     // Create a new item using the Item model
     const newItem = new Item({
@@ -30,7 +43,7 @@ router.post("/", upload.single("image"), async (req, res) => {
       category,
       description,
       location,
-      image: imageUrl, // Save Cloudinary URL here
+      image: imageUrl, // Save local image URL here
       color,
       model,
       brand,
@@ -45,13 +58,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     res.status(201).json(savedItem);
   } catch (error) {
     console.error("Error:", error.message); // Log the error message
-
-    // Handle different types of errors
-    if (error.name === "MulterError") {
-      res.status(400).json({ message: "Multer error. Check file upload." });
-    } else {
-      res.status(500).json({ message: "Internal Server Error" });
-    }
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

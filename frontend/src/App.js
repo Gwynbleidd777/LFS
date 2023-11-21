@@ -2,11 +2,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Headers/Headers";
 import Footers from './components/Footers/Footer';
-import Search from "./pages/Home/ItemList";
+// import Search from "./pages/Home/ItemList";
 import Register from "./pages/Register/Register";
 import Edit from "./pages/Edit/Edit";
 import Profile from "./pages/Profile/Profile";
-import Tables from './pages/L&F Items/L&F';
+// import Tables from './pages/L&F Items/L&F';
 import Home1 from './pages/Home1/Home1';
 import Contact from './pages/Contact/Contact';
 import Main from './components/Main';
@@ -24,10 +24,10 @@ function App() {
 
   // Function to handle logout and redirect to the home page
   const handleLogout = () => {
-    // Implement your logout logic here (e.g., clearing user data, tokens, etc.)
     localStorage.removeItem("token"); // Remove the user token
-    navigate("/"); // Redirect to the home page
+    navigate("/", { replace: true }); // Redirect to the home page immediately without adding to the history
   };
+  
 
   return (
     <>
@@ -40,7 +40,7 @@ function App() {
         {user && <Route path='/profile' element={<Profile />} />}
         {user && <Route path="/ItemList" element={<Item />} />}
         {user && <Route path='/lost&found/:id' element={<Item />} />}
-        {user && <Route path='/Contact' element={<Contact />} />}
+        {user && <Route path='/contact' element={<Contact />} />}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users/:id/verify/:token" element={<EmailVerify />} />

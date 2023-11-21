@@ -120,43 +120,42 @@ const AddItem = () => {
     setInputData({ ...inputData, category: selectedCategory.value });
   };
 
-  const setProfile = (e) => {
+  const setProfile = async (e) => {
     const file = e.target.files[0];
-    setImage(file);
-  
+    console.log(e.target.files[0]);
+    setImage(e.target.files[0]);
+
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-  
-      // Upload the image to Cloudinary directly
+      setImage(file);
       const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "lostAndfound"); // Replace with your Cloudinary upload preset
-  
-      axios
-        .post("https://api.cloudinary.com/v1_1/mohit777/image/upload", formData)
-        .then((response) => {
-          // Handle successful image upload
-          console.log("Cloudinary Image URL:", response.data.url);
-          setCloudinaryImageUrl(response.data.url);
-        })
-        .catch((error) => {
-          // Handle image upload error
-          console.error("Cloudinary Image Upload Failed:", error);
-        });
+      formData.append("image", file);
+
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/api/upload",
+          formData
+        );
+        console.log("Local Image Path:", response.data.imagePath);
+        setCloudinaryImageUrl(response.data.imagePath); // Update state with the local image path
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        // Handle the error condition (e.g., show error message)
+      }
     }
   };
-  
+
   useEffect(() => {
     // Check if cloudinaryImageUrl is not null and other required fields are present
-    if (cloudinaryImageUrl && inputData.itemName && inputData.category && inputData.description && inputData.location) {
+    if (
+      cloudinaryImageUrl &&
+      inputData.itemName &&
+      inputData.category &&
+      inputData.description &&
+      inputData.location
+    ) {
       submitItemData();
     }
   }, [cloudinaryImageUrl, inputData]);
-  
 
   const submitItemData = async () => {
     // Use the latest value of cloudinaryImageUrl
@@ -248,7 +247,7 @@ const AddItem = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center mt-1">Add Lost or Found Item</h2>
+      <h2 className="text-center mt-1">Add Lost Or Found Item</h2>
       <Card className="shadow mt-3 p-3">
         <Form>
           {/* Basic Details section */}
@@ -335,10 +334,10 @@ const AddItem = () => {
                     <Form.Control
                       type="file"
                       name="image"
-                      onChange={setProfile}
+                      onChange={(e) => setProfile(e)} // Update onChange handler
                       ref={fileInputRef} // Assign the ref to the file input
                     />
-                    {image && (
+                    {preview && ( // Check for preview instead of image
                       <div className="image-preview-box">
                         <h4>Image Preview</h4>
                         <div className="image-preview-container">

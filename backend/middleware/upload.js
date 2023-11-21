@@ -1,21 +1,15 @@
-// middleware/upload.js
 const multer = require('multer');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const cloudinary = require('cloudinary').v2; // Make sure to require Cloudinary and configure it
+const path = require('path');
 
-// Configure Cloudinary (you may need to set your cloudinary config options)
-cloudinary.config({
-  cloud_name: 'mohit777',
-  api_key: '295458925112764',
-  api_secret: 'MgqaN5tTpLsLijHkPk9ocH7yzb0',
-});
-
-// Multer storage configuration with Cloudinary
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-//   params: {
-//     folder: 'LFS Items',
-//   },
+// Update storage settings for multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Set the destination folder
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  }
 });
 
 const upload = multer({ storage: storage });

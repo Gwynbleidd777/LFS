@@ -23,8 +23,8 @@ const Footers = () => {
             <div className="contact mb-3">
               <div className="contact-info">
                 <p>Address: Barbaria, Moshpukur, Barasat</p>
-                <p>Email: ranjdeepLGBTQ@gmail.com</p>
-                <p>Phone: +91 98304 23492</p>
+                <p>Email: mohitofcl7@gmail.com</p>
+                <p>Phone: +91 7003961588</p>
               </div>
             </div>
           </div>

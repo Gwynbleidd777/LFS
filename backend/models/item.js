@@ -6,7 +6,7 @@ const itemSchema = new mongoose.Schema({
   category: { type: String, required: true },
   description: { type: String, required: true },
   location: { type: String, required: true },
-  image: { type: String }, // Assuming you store the image path as a string
+  image: { type: String, required: true }, // Assuming you store the image path as a string
   color: { type: String },
   model: { type: String },
   brand: { type: String },

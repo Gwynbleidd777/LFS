@@ -1,17 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  window.location.reload();
-};
+import { NavLink, useNavigate } from "react-router-dom";
 
 const AuthenticatedNav = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/", { replace: true }); // Redirect to the home page
+  };
   return (
     <div className="menu transparent-menu">
-      <div className="name">
-        {/* <h3>LOST AND FOUND SYSTEM</h3> */}
-      </div>
+      <div className="name">{/* <h3>LOST AND FOUND SYSTEM</h3> */}</div>
       <nav className="menuitems">
         <ul className="nav-list">
           {/* <li>
@@ -35,10 +34,7 @@ const AuthenticatedNav = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/profile"
-              className="nav-menu nav-menu-animated"
-            >
+            <NavLink to="/profile" className="nav-menu nav-menu-animated">
               <i className="fa-solid fa-user"></i>My Profile
             </NavLink>
           </li>

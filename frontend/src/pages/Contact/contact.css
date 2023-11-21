@@ -1,38 +1,196 @@
 .head {
-    
-    background-color: black;
-    color: aliceblue;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: 3%;
-    margin-left: 30%;
-    margin-right: 30%;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}     
+  color: #385a64;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 3%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.head h1 {
+  border-bottom: 5px solid #00dfc0;
+  display: inline-block;
+  padding-bottom: 5px;
+}
 
 .containers {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: aqua;
 }
 
 .card-profile {
-width: 23%;
-/* Adjust the width as needed */
-margin-bottom: 20px;
-
+  width: 100%;
+  max-width: 23rem;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: transform 0.3s;
+  border-radius: 20px;
 }
 
-.headS{
-background-color: rgb(0, 255, 234);
-color: rgb(0, 0, 0);
-text-align: center;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-margin-top: 3%;
-margin-left: 30%;
-margin-right: 30%;
-border-radius: 20px;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+@media (min-width: 576px) {
+  /* Small devices (576px and up) */
+  .card-profile {
+    max-width: 45%;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Medium devices (768px and up) */
+  .card-profile {
+    max-width: 31%;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Large devices (992px and up) */
+  .card-profile {
+    max-width: 23%;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Extra-large devices (1200px and up) */
+  .card-profile {
+    max-width: 23%;
+  }
+}
+
+.card-profile:hover {
+  transform: scale(1.05);
+}
+
+.divider {
+  border-top: 5px solid #000000;
+  margin: 0px 100px;
+}
+
+.headS {
+  background-color: rgb(0, 255, 234);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 3%;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.row-width-space {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.col-lg-6 {
+  flex: 0 0 50%;
+  max-width: 100%;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.botl,
+.botr {
+  width: 100%;
+}
+
+.card-admin {
+  height: 700px;
+  text-align: center;
+  color: #385a64;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.card-admin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.botl h3 {
+  color: #385a64;
+  text-align: center;
+  border-bottom: 3px solid #00dfc0;
+  padding-bottom: 5px;
+}
+
+.image-container {
+  width: 100%; /* Ensure the container fills the available space */
+  height: 500px; /* Set a fixed height for the image container */
+  overflow: hidden; /* Hide any overflow if the image exceeds the container */
+  border-radius: 20px 20px 0 0; /* Apply border radius if needed */
+}
+
+.image-container img {
+  width: 100%; /* Ensure the image fills the entire container width */
+  height: 100%; /* Ensure the image fills the entire container height */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+/* Add this CSS to your existing contact.css file */
+
+/* Target the name, email, and phone number inside the cards */
+.card-profile .text-center b,
+.card-profile .text-center h6 {
+  color: #385a64; /* Set the text color to #385A64 */
+}
+
+/* Optionally, you can adjust the label color for better visibility */
+.botl label {
+  color: #385a64; /* Set the label color to #385A64 */
+}
+
+/* Style for the "Close" button in the modal */
+.btn-submit {
+  background-color: #00dfc0;
+  border-color: #00dfc0;
+  color: #385a64;
+  /* font-weight: bold; */
+  /* padding: 15px 30px; */
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Transition effect on hover */
+}
+
+.btn-submit:hover {
+  background-color: #385a64;
+  border-color: #385a64;
+  color: #00dfc0;
+}
+
+/* Center the modal title */
+.modal-title {
+  width: 100%;
+  color: #385a64;
+}
+
+/* Center align the message in the modal body */
+.modal-body {
+  text-align: center;
+  color: #385a64;
+}
+
+/* ... (your existing styles) */
+
+.custom-divider {
+  border: none;
+  height: 10px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    #385a64,
+    rgba(0, 0, 0, 0)
+  );
+  margin: 20px auto;
 }

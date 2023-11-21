@@ -1,17 +1,44 @@
-.card-profile-stats img {
-    max-width: 86px;
-    border-radius: 50%;
-    border: 1px solid #111;
+profile.css .list-group-item {
+  border-radius: 0%;
+
+  /* width: 50%; */
+  transition: transform 0.2s;
+}
+.list-group-item:hover {
+  background-color: aliceblue;
+  transform: scale(1.05);
 }
 
-.email {
-    color: rgb(238, 101, 122);
+.card-title,
+.mb-3,
+.card-text,
+.form-control {
+  color: #385a64;
 }
 
-.location {
-    color: blue;
+.btn-container {
+  display: flex;
+  justify-content: flex-start;
 }
 
-.calendar {
-    color: rebeccapurple;
+.btn {
+  background-color: #00dfc0;
+  border-color: #00dfc0;
+  color: #385a64;
+  transition: transform 0.5s;
+  margin-right: 10px; /* To give some space between the button and form */
+}
+
+.btn:hover {
+  background-color: #385a64;
+  border-color: #385a64;
+  color: #00dfc0;
+}
+
+.slideRight {
+  transform: translateX(calc(100% - -435%)); /* Adjust the value as needed */
+}
+
+.slideLeft {
+  transform: translateX(0);
 }

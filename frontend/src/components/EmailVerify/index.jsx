@@ -1,42 +1,38 @@
-import { useEffect, useState, Fragment } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import success from "../../images/success.jpg";
-import styles from "./styles.module.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useHistory from 'react';
+import axios from 'axios';
 
 const EmailVerify = () => {
-  const [validUrl, setValidUrl] = useState(true);
-  const { id, token } = useParams(); // Use object destructuring to access id and token
+  const { id, token } = useParams();
+  const history = useHistory();
+  const [verificationStatus, setVerificationStatus] = useState('');
 
   useEffect(() => {
-    const verifyEmailUrl = async () => {
+    const verifyEmail = async () => {
       try {
         const url = `http://localhost:8080/api/users/${id}/verify/${token}`;
-        const { data } = await axios.get(url);
-        console.log(data);
-        setValidUrl(true);
+        const response = await axios.get(url);
+        setVerificationStatus(response.data.message);
+        // Check if verification is successful
+        if (response.status === 200) {
+          // Redirect to the welcome page if verification is successful
+          history.push('/welcome');
+        }
       } catch (error) {
-        console.log(error);
-        setValidUrl(false);
+        console.error(error);
+        setVerificationStatus('Failed to verify email.');
       }
     };
-    verifyEmailUrl();
-  }, [id, token]); // Include id and token in the dependency array
+
+    verifyEmail();
+  }, [id, token, history]);
 
   return (
-    <Fragment>
-      {validUrl ? (
-        <div className={styles.container}>
-          <img src={success} alt="success_img" className={styles.success_img} />
-          <h1>Email Verified Successfully</h1>
-          <Link to="/login">
-            <button className={styles.green_btn}>Login</button>
-          </Link>
-        </div>
-      ) : (
-        <h1>404 Not Found</h1>
-      )}
-    </Fragment>
+    <div>
+      <h2>Email Verification Status: {verificationStatus}</h2>
+      {/* You can include additional UI elements or messages here */}
+    </div>
   );
 };
 

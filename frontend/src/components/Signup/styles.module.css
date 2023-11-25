@@ -9,7 +9,7 @@
 
 .signup_form_container {
 	width: 900px;
-	height: 500px;
+	height: 675px;
 	display: flex;
 	border-radius: 10px;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
@@ -67,6 +67,18 @@
 	font-size: 14px;
 }
 
+.pass {
+	outline: none;
+	border: none;
+	width: 370px;
+	padding: 15px;
+	border-radius: 10px;
+	background-color: #edf5f3;
+	margin: 5px 0;
+	margin-left: 15px;
+	font-size: 14px;
+}
+
 .error_msg,
 .success_msg {
 	width: 370px;
@@ -101,3 +113,20 @@
 	color: white;
 	margin: 10px;
 }
+
+/* styles.module.css */
+
+/* ... (other styles) */
+
+/* Style for the eye icons in password fields */
+.eye_icon {
+	position: relative;
+	left: -35px; /* Adjust the value to move the eye icon to the right */
+	cursor: pointer;
+	/* Add any other necessary styles */
+  }
+  
+  .password_notes_box {
+	margin-top: 15px;
+	margin-left: 15px;
+  }

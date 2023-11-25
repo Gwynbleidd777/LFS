@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  verified: { type: Boolean, default: false },
+  verified: { type: Boolean, default: true },
   profile: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "ProfileInfo", // Reference to the ProfileInfo model
@@ -31,6 +31,11 @@ const validateUser = (data) => {
     lastName: Joi.string().required().label("Last Name"),
     email: Joi.string().email().required().label("Email"),
     password: passwordComplexity().required().label("Password"),
+    confirmPassword: Joi.any()
+      .valid(Joi.ref("password"))
+      .required()
+      .label("Confirm Password")
+      .messages({ "any.only": "Passwords Do Not Match" }), // Custom message for passwords mismatch
   });
   return schema.validate(data);
 };

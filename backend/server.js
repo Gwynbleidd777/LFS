@@ -14,6 +14,9 @@ const { User, validateUser } = require("./models/user"); // Import the User mode
 const Item = require("./models/item"); // Import your Item model
 const contactRoute = require("./routes/contact");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("./utils/sendEmail"); // Import the sendEmail function
+const bcrypt = require("bcrypt");
+const { Admin, validateAdmin } = require("./models/admin");
 
 // database connection
 connection();
@@ -44,6 +47,13 @@ const authenticateToken = (req, res, next) => {
   } catch (error) {
     res.status(400).json({ message: "Invalid token." });
   }
+};
+
+// Function to generate a verification token (example implementation)
+const generateVerificationToken = () => {
+  // Implement your token generation logic here
+  const token = Math.random().toString(36).substring(7); // Example: Generate a random alphanumeric token
+  return token;
 };
 
 // middlewares
@@ -174,25 +184,143 @@ app.post("/api/register", async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ message: "User with this email already exists." });
+        .json({ message: "User With This Email Already Exists." });
     }
 
-    // create a new user
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10); // 10 is the saltRounds value
+
+    // create a new user with the hashed password
     const newUser = new User({
       firstName,
       lastName,
       email,
-      password,
+      password: hashedPassword, // Store the hashed password
     });
 
     // save the user to the database
     await newUser.save();
 
+    // send verification email
+    const verificationToken = generateVerificationToken(); // You need to implement this function to generate a unique token
+    const verificationLink = `${process.env.BASE_URL}/verify-email?token=${verificationToken}&email=${email}`;
+    await sendEmail(email, "Verify Email", verificationLink);
+
     // send a success response
-    res.status(201).json({ message: "User registered successfully." });
+    res.status(201).json({ message: "Verification Link Sent To Your Email !" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error !" });
+  }
+});
+
+// Backend endpoint for email verification
+app.get("/api/users/:id/verify/:token", async (req, res) => {
+  try {
+    const { id, token } = req.params;
+
+    // Find the user by ID
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Find the token associated with the user
+    const userToken = await Token.findOne({ userId: id, token });
+
+    if (!userToken) {
+      return res.status(400).json({ message: "Invalid verification token" });
+    }
+
+    // Check if the token has expired (assuming `createdAt` field in the token schema)
+    if (userToken.createdAt < new Date(Date.now() - 3600 * 1000)) {
+      // Token is expired, handle as needed (e.g., send a new verification email)
+      return res.status(400).json({ message: "Verification token expired" });
+    }
+
+    // Update the user's verified field to true and remove the verification token
+    user.verified = true;
+    await user.save();
+
+    // Remove the verification token from the database
+    await userToken.remove();
+
+    res.status(200).json({ message: "Email verified successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
+// Add an endpoint for admin registration
+app.post("/api/admin/register", async (req, res) => {
+  try {
+    const { firstName, email, password } = req.body;
+
+    // Validate input
+    const { error } = validateAdmin(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+
+    // Check if the admin already exists
+    const existingAdmin = await Admin.findOne({ email });
+    if (existingAdmin) {
+      return res
+        .status(400)
+        .json({ message: "Admin With This Email Already Exists." });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10); // 10 is the saltRounds value
+
+    // Create a new admin with the hashed password
+    const newAdmin = new Admin({
+      firstName,
+      email,
+      password: hashedPassword, // Store the hashed password
+    });
+
+    // Save the admin to the database
+    await newAdmin.save();
+
+    // Send a success response
+    res.status(201).json({ message: "Admin registered successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error !" });
+  }
+});
+
+app.post("/api/admin/auth", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find the admin by email
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // Compare the provided password with the hashed password stored in the database
+    const isPasswordValid = await bcrypt.compare(password, admin.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // Generate JWT token for admin
+    const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h", // Set expiration time as desired
+    });
+
+    res.status(200).json({ token }); // Send the generated token
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

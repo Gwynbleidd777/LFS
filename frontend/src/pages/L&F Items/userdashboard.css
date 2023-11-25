@@ -1,0 +1,17 @@
+/* Custom CSS */
+.fixed-height-card {
+  height: 350px; /* Set your desired fixed height here */
+  /* Other card styles */
+}
+
+.card-image {
+  height: 200px; /* Set the fixed height for the image portion */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Add this styling in your CSS file or style section */
+.category-label {
+  font-weight: bold;
+  font-size: 1.2em; /* Adjust the font size as needed */
+}

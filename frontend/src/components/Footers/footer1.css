@@ -1,0 +1,32 @@
+/* footer1.css */
+
+/* Overall footer1 style */
+.footer1 {
+    background-color: #385A64;
+  }
+  
+  /* Adjusting padding */
+  .footer1 .container {
+    padding-top: 1px;
+    padding-bottom: 40px;
+  }
+  
+  /* Styling the 'Lost And Found System' heading */
+  .footer1 .footer-section h2 {
+    color: #ffffff;
+    margin-bottom: 1rem; /* Equivalent to mb-4 in Bootstrap */
+  }
+  
+  /* Styling the social icons */
+  .footer1 .social-icons a {
+    color: #ffffff;
+    margin-right: 0.75rem; /* Adjust the space between icons */
+    margin-left: 9%;
+  }
+  
+  /* Styling contact information */
+  .footer1 .contact-info p {
+    color: #ffffff;
+    margin-bottom: 0.5rem; /* Adjust the spacing between paragraphs */
+  }
+  

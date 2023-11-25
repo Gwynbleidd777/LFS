@@ -60,7 +60,7 @@ const Contact = () => {
             name: "Animesh Kumar Sur",
             email: "animeshsur900@gmail.com",
             phone: "+91 7061523594",
-            imgSrc: "/Arsola.jpg",
+            imgSrc: "/Arsola2.jpg",
           },
           {
             name: "Mohit Das",

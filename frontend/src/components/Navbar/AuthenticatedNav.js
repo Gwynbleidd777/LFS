@@ -6,18 +6,13 @@ const AuthenticatedNav = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/", { replace: true }); // Redirect to the home page
+    navigate("/", { replace: true });
   };
   return (
     <div className="menu transparent-menu">
-      <div className="name">{/* <h3>LOST AND FOUND SYSTEM</h3> */}</div>
+      <div className="name"></div>
       <nav className="menuitems">
         <ul className="nav-list">
-          {/* <li>
-            <NavLink to="/" className="nav-menu nav-menu-animated">
-              <i className="fa-solid fa-house"></i>Home
-            </NavLink>
-          </li> */}
           <li>
             <NavLink to="/ItemList" className="nav-menu nav-menu-animated">
               <i className="fa-solid fa-circle-info"></i>Lost & Found

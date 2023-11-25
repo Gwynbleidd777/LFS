@@ -1,0 +1,11 @@
+/* footer2.css */
+.footer2 {
+    background-color: #00DFC0;
+}
+/* Styling the bottom section */
+.footer2 .text-center p {
+    background-color: #00DFC0;
+    color: #ffffff;
+    padding: 0.75rem; /* Adjust padding as needed */
+  }
+  
